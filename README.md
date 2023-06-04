@@ -403,7 +403,111 @@ Inside the `/OpenLane/scripts/openroad/cts.tcl` contains the configuration varia
 - `CTS_ROOT_BUFFER` = clock buffer used for the root of the clock tree and is the biggest clock buffer to drive the clock tree of the whole chip (`sky130_fd_sc_hd__clkbuf_16`)
 - `CTS_MAX_CAP` = maximum capacitance of the output port of the root clock buffer.
 
+To clone the necessary mag files and spice models for the inverter, PMOS, and NMOS in the Sky130 process, follow these steps:
 
+Open your terminal or command prompt.
+1. Run the following command to clone the files from the GitHub repository:
+``` git clone https://github.com/nickson-jose/vsdstdcelldesign.git ```
+- The layout details of an inverter can be found in the ``sky130_inv.mag`` file.
+- The file contains information about the physical arrangement of the inverter components on the chip.
+- The inverter layout is important for understanding how the inverter is designed and how its components are connected.
+- To access the file and view the layout information, navigate to the ``sky130_inv.mag`` file in the repository.
+- The layout information provided in the file helps in understanding the spatial organization of the inverter's transistors, metal interconnects, and other elements.
+- By examining the inverter layout, one can gain insights into the physical implementation of the circuit and its interconnections.
+- Understanding the inverter layout is crucial for analyzing its performance, identifying potential issues, and making improvements if necessary.
+- To make use of the information in the ``sky130_inv.mag`` file, open it in a layout viewing tool compatible with the file format.
+- The file provides a visual representation of the inverter layout, enabling designers to examine the physical structure and connectivity of the components.
+- By studying the inverter layout, designers can gain a deeper understanding of its physical characteristics, aiding in the overall design process.
+
+For layout we run magic command
+
+``` magic -T sky130A.tech sky130_inv.mag & ```
+
+![inverter_layout](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/d77b1bf7-fa21-42dc-82fc-ec3f92611210)
+
+
+2. Modify the spice file to be able to plot a transient response:
+```
+* SPICE3 file created from sky130_inv.ext - technology: sky130A
+
+.option scale=0.01u
+.include ./libs/pshort.lib
+.include ./libs/nshort.lib
+
+* .subckt sky130_inv A Y VPWR VGND
+M0 Y A VGND VGND nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
+M1 Y A VPWR VPWR pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=37 l=23
+C0 A VPWR 0.08fF
+C1 Y VPWR 0.08fF
+C2 A Y 0.02fF
+C3 Y VGND 0.18fF
+C4 VPWR VGND 0.74fF
+* .ends
+
+* Power supply 
+VDD VPWR 0 3.3V 
+VSS VGND 0 0V 
+
+* Input Signal
+Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+
+* Simulation Control
+.tran 1n 20n
+.control
+run
+.endc
+.end
+```
+
+3. Open the spice file by typing ``ngspice sky130A_inv.spice``. And Generate a graph using ``plot y vs time a`` :
+``
+Circuit:** spice3 file created from sky130_inv.ext - technology: 
+
+Scale set
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Warning: va: no DC value, transient time 0 value used
+
+Initial Transient Solution
+--------------------------
+Node                                                Voltage
+----                                                -------
+y                                                       3.3
+a                                                         0 
+vgnd                                                      0
+vpwr                                                      0
+va#branch                                               3.3
+vss#branch                                      3.33336e-12
+vdd#branch                                     -3.33339e-12
+
+Reference value: 0.00000e+00
+
+No. of Data Rows: 160
+ngspice 1 -> plot y vs time a 
+ngspice 1 ->
+
+``
+![graph](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/110390e3-e5f6-460e-a5be-3bff982068c9)
+
+4. To analyze the cell's slew rate and propagation delay, we will examine the transient response of the circuit. Specifically, we will focus on the rise transition. By studying this transition, we can gain insights into the cell's performance characteristics.
+
+The rise transition is a critical parameter that helps us understand how quickly the output signal can change from a low voltage level to a high voltage level. It is measured by calculating the time it takes for the output to make this transition between the specified voltage thresholds.
+
+By analyzing the rise transition, we can determine two important characteristics of the cell:
+
+- Slew Rate: The slew rate indicates how fast the output voltage changes over time during the rise transition. It is calculated by dividing the voltage difference (2.64V - 0.66V) by the time taken for the transition. A higher slew rate implies a faster transition, indicating a more efficient and responsive cell.
+
+- Propagation Delay: The propagation delay measures the time it takes for the output signal to propagate from the input to the output of the cell during the rise transition. It is calculated by subtracting the delay caused by the input from the total rise transition time. The propagation delay provides insights into the cell's speed and responsiveness.
+
+	- Rise Transition output transition time from 20%(0.66V) to 80%(2.64V):
+	 `Tr_r = 2.19981 ns - 2.15739 ns = 0.04242 ns`
+	- Fall Transition output transition time from 80%(2.64V) to 20%(0.66V):
+	 `Tr_f = 4.0672 ns - 4.04007 ns = 0.02713 ns`
+	- Rise Delay delay between 50%(1.65V) of input to 50%(1.65V) of output:
+	 `D_r = 2.18197 ns - 2.15003 ns = 0.03194 ns`
+	- Fall Delay delay between 50%(1.65V) of input to 50%(1.65V) of output:
+	 `D_f = 4.05364 ns - 4.05001 ns =0.00363 ns`
+	
 ### Routing Stage: 
 One simple routing algorithm is Maze Routing or Lee's routing:
 - The shortest path is one that follows a steady increment of one (1-to-9 on the example below). There might be multiple path like this but the best path that the tool will choose is one with less bends. The route should not be diagonal and must not overlap an obstruction such as macros. 
@@ -467,7 +571,7 @@ Best reference for this the [Triton Route paper](https://www.google.com/url?sa=t
 ```
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/04-06_12-18/results/magic/picorv32a.mag
 ```
-
+![klayout](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/745b403c-b03d-4928-9b35-679d5ebe1435)
 
 
 **Library Characterization:**
