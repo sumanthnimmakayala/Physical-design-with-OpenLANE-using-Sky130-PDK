@@ -43,13 +43,13 @@ Digital ASIC design requires several elements to be considered, and here we will
 
 **PDK Data (Process Design Kit) :** PDK is a collection of files provided by foundries to model the fabrication process for EDA tools. It acts as an interface between designers and the fabrication team. PDK data consists of several important elements:
 
-- - Design Rules : These rules define the geometrical and electrical constraints for designing the layout. They specify guidelines for metal spacing, width, vias, and other layout parameters to ensure proper manufacturability.
+ - Design Rules : These rules define the geometrical and electrical constraints for designing the layout. They specify guidelines for metal spacing, width, vias, and other layout parameters to ensure proper manufacturability.
 
-- - Device Models : Device models describe the behavior of transistors and other active/passive components in the fabrication process. They provide information about the electrical characteristics, such as voltage-current relationships and capacitances, required for accurate simulation and analysis.
+ - Device Models : Device models describe the behavior of transistors and other active/passive components in the fabrication process. They provide information about the electrical characteristics, such as voltage-current relationships and capacitances, required for accurate simulation and analysis.
 
-- - Digital Standard Cell Libraries : These libraries contain pre-designed and pre-characterized standard cells, which are the building blocks of digital circuits. They include logic gates, flip-flops, and other commonly used elements. These cells are optimized for area, power, and timing, providing efficient options for circuit implementation.
+ - Digital Standard Cell Libraries : These libraries contain pre-designed and pre-characterized standard cells, which are the building blocks of digital circuits. They include logic gates, flip-flops, and other commonly used elements. These cells are optimized for area, power, and timing, providing efficient options for circuit implementation.
 
-- - I/O Libraries : I/O libraries consist of interface cells designed for communication between the ASIC and the external world. They include input/output buffers, voltage level shifters, and other components to facilitate data transfer.
+ - I/O Libraries : I/O libraries consist of interface cells designed for communication between the ASIC and the external world. They include input/output buffers, voltage level shifters, and other components to facilitate data transfer.
 
 
 Open Source Digital ASIC Design requires three open-source components:  
@@ -151,7 +151,7 @@ The  `README.md` describes all configuration variables for every stage and the t
  	![interactive_start](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/0ab39849-c68e-454b-ae26-89384ee3f1ae)
 
 
- `% package require openlane 0.9` == retrives all dependencies for running v0.9 of OpenLANE  
+ - `% package require openlane 0.9` == retrives all dependencies for running v0.9 of OpenLANE  
  
    ![package_start](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/cff96923-b988-4d14-921e-f85a6a5f2974)
  
@@ -543,32 +543,16 @@ To ensure proper signal timing and avoid any issues, we need to perform certain 
 
 Here's what happens during this process:
 
-**Parasitic Extraction:** The first step is to extract the parasitic resistance and capacitance from the design layout. This is done using the Standard Parasitics Extraction Format (SPEF). The extracted SPEF file contains information about the real-world parasitic effects that can impact signal delays.
+- **Parasitic Extraction:** The first step is to extract the parasitic resistance and capacitance from the design layout. This is done using the Standard Parasitics Extraction Format (SPEF). The extracted SPEF file contains information about the real-world parasitic effects that can impact signal delays.
 
-**Multi-Corner STA:** Once the parasitic extraction is complete, we perform STA using the extracted SPEF. Multi-corner STA involves analyzing the timing behavior of the design under different corner conditions. It considers three corners: `minimum, maximum, and nominal`. By examining the timing in these different scenarios, we can ensure that the design meets the required timing constraints.
+- **Multi-Corner STA:** Once the parasitic extraction is complete, we perform STA using the extracted SPEF. Multi-corner STA involves analyzing the timing behavior of the design under different corner conditions. It considers three corners: `minimum, maximum, and nominal`. By examining the timing in these different scenarios, we can ensure that the design meets the required timing constraints.
 
-**Slack Analysis:** The introduction of real-world parasitics can potentially worsen the slack, which is the timing margin between the required and actual arrival times of signals. Both setup and hold slack can be affected. Setup slack refers to the time difference between the launch and capture of signals, while hold slack refers to the time for which a signal must be held stable. It is important to ensure that the slack is within acceptable levels for proper circuit functionality.
+- **Slack Analysis:** The introduction of real-world parasitics can potentially worsen the slack, which is the timing margin between the required and actual arrival times of signals. Both setup and hold slack can be affected. Setup slack refers to the time difference between the launch and capture of signals, while hold slack refers to the time for which a signal must be held stable. It is important to ensure that the slack is within acceptable levels for proper circuit functionality.
 
-**SPEF and STA Logs:** The results of the SPEF extraction and STA analysis can be found in the designated directories. The extracted SPEF file is typically located under `runs/picorv32a/results/routing`, while the STA log files are stored in `runs/picorv32a/logs/signoff`. These logs provide detailed information about timing violations, slack values, and other relevant data for analysis.
+- **SPEF and STA Logs:** The results of the SPEF extraction and STA analysis can be found in the designated directories. The extracted SPEF file is typically located under `runs/picorv32a/results/routing`, while the STA log files are stored in `runs/picorv32a/logs/signoff`. These logs provide detailed information about timing violations, slack values, and other relevant data for analysis.
 
-**Timing ECO:** If the slack values are not within the desired levels, a Timing Engineering Change Order (ECO) can be performed. This involves making adjustments to the design, such as tweaking the netlist or modifying the routing, to improve the slack and meet the required timing constraints.
+- **Timing ECO:** If the slack values are not within the desired levels, a Timing Engineering Change Order (ECO) can be performed. This involves making adjustments to the design, such as tweaking the netlist or modifying the routing, to improve the slack and meet the required timing constraints.
 
 Once the post-routing STA and timing ECO are completed, the final step is to generate the GDSII (Graphic Data System II) file for fabrication. This is done by running run_magic, which utilizes Magic to create the GDSII file. The resulting GDSII file, located at `runs/picorv32a/results/signoff/picorv32a.gds`, can be further processed or sent for manufacturing.
 
 ![finalgds](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/d3522ee3-6445-469c-9d6e-b08e6ef1ad6a)
-
-![gdsII](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/5e9d0e35-9ab3-4976-9beb-0c4835027407)
-
-
-# Caravel User Project
-
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![UPRJ_CI](https://github.com/efabless/caravel_project_example/actions/workflows/user_project_ci.yml/badge.svg)](https://github.com/efabless/caravel_project_example/actions/workflows/user_project_ci.yml) [![Caravel Build](https://github.com/efabless/caravel_project_example/actions/workflows/caravel_build.yml/badge.svg)](https://github.com/efabless/caravel_project_example/actions/workflows/caravel_build.yml)
-
-| :exclamation: Important Note            |
-|-----------------------------------------|
-
-## Please fill in your project documentation in this README.md file 
-
-Refer to [README](docs/source/index.rst#section-quickstart) for a quickstart of how to use caravel_user_project
-
-Refer to [README](docs/source/index.rst) for this sample project documentation. 
