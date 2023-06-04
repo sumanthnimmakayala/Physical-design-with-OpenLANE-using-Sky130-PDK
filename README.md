@@ -2,31 +2,31 @@
 
 Physical design is the crucial process of converting a gate-level netlist into a manufacturable physical layout. It involves several steps to ensure a high-quality chip design.
 
-**Partitioning :** The design is divided into smaller functional blocks called macros. This helps minimize connections between macros by placing related blocks close to each other.
+- **Partitioning :** The design is divided into smaller functional blocks called macros. This helps minimize connections between macros by placing related blocks close to each other.
 
-**Floor planning :** This step is critical as it determines the shape, size, and overall quality of the chip. The floor plan defines the layout of macros, halos/blockages, I/O pins, and pre-placed cells according to specific guidelines.
+- **Floor planning :** This step is critical as it determines the shape, size, and overall quality of the chip. The floor plan defines the layout of macros, halos/blockages, I/O pins, and pre-placed cells according to specific guidelines.
 
-**Power planning :** To distribute power evenly to all cells, a power grid is created. Power is drawn from the supply to power rings, then to stripes, and finally through rails to the standard cells.
+- **Power planning :** To distribute power evenly to all cells, a power grid is created. Power is drawn from the supply to power rings, then to stripes, and finally through rails to the standard cells.
 
-**Placement :** Standard cells are placed within the chip's core. Coarse placement roughly positions cells within modules, allowing for overlap. Detailed placement ensures that cells are placed in site rows without overlap or congestion, using blockages/halos.
+- **Placement :** Standard cells are placed within the chip's core. Coarse placement roughly positions cells within modules, allowing for overlap. Detailed placement ensures that cells are placed in site rows without overlap or congestion, using blockages/halos.
 
-**Clock Tree Synthesis (CTS) :** In sequential designs, the clock plays a crucial role. CTS propagates the clock signal to each clock sink with minimal skew and insertion delay. Clock buffers and inverters are inserted along the clock path. Clock balancing is achieved through H-tree methodology to meet timing and power requirements.
+- **Clock Tree Synthesis (CTS) :** In sequential designs, the clock plays a crucial role. CTS propagates the clock signal to each clock sink with minimal skew and insertion delay. Clock buffers and inverters are inserted along the clock path. Clock balancing is achieved through H-tree methodology to meet timing and power requirements.
 
-**Routing :** This stage physically connects the cells using metal straps. Actual interconnect delays are determined during routing. Prior to this stage, connections are logical through trail routing. After detailed routing, the design undergoes verification for design rule checks (DRC) and layout-versus-schematic checks (LVS).
+- **Routing :** This stage physically connects the cells using metal straps. Actual interconnect delays are determined during routing. Prior to this stage, connections are logical through trail routing. After detailed routing, the design undergoes verification for design rule checks (DRC) and layout-versus-schematic checks (LVS).
 
-**Final Verification and Output :** Once the design passes verification, the output in the form of GDSII (Graphic Data System II) is provided to the fabrication team for the chip manufacturing process. Once the design passes verification, the output in the form of a GDSII file is handed over to the fabrication team for manufacturing. To communicate with computers effectively, it is important to understand the components and processes involved in their functioning. Here is a simplified explanation of key concepts related to computer communication:
+- **Final Verification and Output :** Once the design passes verification, the output in the form of GDSII (Graphic Data System II) is provided to the fabrication team for the chip manufacturing process. Once the design passes verification, the output in the form of a GDSII file is handed over to the fabrication team for manufacturing. To communicate with computers effectively, it is important to understand the components and processes involved in their functioning. Here is a simplified explanation of key concepts related to computer communication:
 
-**QFN-48 Package :** The Quad No Lead 48 (QFN-48) package is a type of integrated circuit (IC) component used in programmable modules and microcomputers. It has a 7x7mm body with 48 pins that connect to the circuit board. The chip sits in the center of the package, which acts as a protective case to safeguard it from damage.
+	- **QFN-48 Package :** The Quad No Lead 48 (QFN-48) package is a type of integrated circuit (IC) component used in programmable modules and microcomputers. It has a 7x7mm body with 48 pins that connect to the circuit board. The chip sits in the center of the package, which acts as a protective case to safeguard it from damage.
 
 ### Chip Components :
 
-**Die :** The die refers to the size of the entire chip and the area where input/output (I/O) pads are located.
+- **Die :** The die refers to the size of the entire chip and the area where input/output (I/O) pads are located.
 
-**Pads :** Signals travel in and out of the chip through these pads.
+- **Pads :** Signals travel in and out of the chip through these pads.
 
-**Core :** The core is the area where macros and standard cells are situated, and where routing takes place.
+- **Core :** The core is the area where macros and standard cells are situated, and where routing takes place.
 
-**Foundry IPs and Macros :** Inside the core, there are blocks called foundry IPs, which are built using intelligence and are manufactured using a foundry. Macros, on the other hand, are pure digital logic blocks.
+- **Foundry IPs and Macros :** Inside the core, there are blocks called foundry IPs, which are built using intelligence and are manufactured using a foundry. Macros, on the other hand, are pure digital logic blocks.
 
 **RISC-V Instruction Set Architecture (ISA) :** The RISC-V ISA is a language that enables communication between software and hardware. When we have a C program that needs to run on a computer with a specific layout, we follow a particular flow. The C program is first compiled into an assembly language program (RISC-V), and then converted into a binary format. This binary format is executed as a layout. To facilitate this execution, a hardware description language is used as an interface between the architecture and the layout. The architecture is implemented using Register Transfer Level (RTL), and the Place and Route (PnR) process generates the layout as an output.
 
