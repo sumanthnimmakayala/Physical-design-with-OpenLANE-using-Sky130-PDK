@@ -28,7 +28,8 @@ Physical design is the crucial process of converting a gate-level netlist into a
 
 - **Foundry IPs and Macros :** Inside the core, there are blocks called foundry IPs, which are built using intelligence and are manufactured using a foundry. Macros, on the other hand, are pure digital logic blocks.
 
-**RISC-V Instruction Set Architecture (ISA) :** The RISC-V ISA is a language that enables communication between software and hardware. When we have a C program that needs to run on a computer with a specific layout, we follow a particular flow. The C program is first compiled into an assembly language program (RISC-V), and then converted into a binary format. This binary format is executed as a layout. To facilitate this execution, a hardware description language is used as an interface between the architecture and the layout. The architecture is implemented using Register Transfer Level (RTL), and the Place and Route (PnR) process generates the layout as an output.
+### RISC-V Instruction Set Architecture (ISA) :
+The RISC-V ISA is a language that enables communication between software and hardware. When we have a C program that needs to run on a computer with a specific layout, we follow a particular flow. The C program is first compiled into an assembly language program (RISC-V), and then converted into a binary format. This binary format is executed as a layout. To facilitate this execution, a hardware description language is used as an interface between the architecture and the layout. The architecture is implemented using Register Transfer Level (RTL), and the Place and Route (PnR) process generates the layout as an output.
 
 Remember, effective communication with computers involves understanding the various components, their interactions, and the specific languages and processes required to translate and execute programs on hardware.
 
@@ -37,22 +38,22 @@ This has been designed using the Verilog Hardware Description Language using Xil
 
 Digital ASIC design requires several elements to be considered, and here we will discuss the key components, including RTL, EDA tools, and PDK data.
 
-**RTL (Register Transfer Level) :** RTL is an abstraction level of the digital design description, where designers define the functionality of the circuit using hardware description languages like Verilog or VHDL. It represents the flow of data between registers and the operations performed on that data.
+- **RTL (Register Transfer Level) :** RTL is an abstraction level of the digital design description, where designers define the functionality of the circuit using hardware description languages like Verilog or VHDL. It represents the flow of data between registers and the operations performed on that data.
 
-**EDA Tools (Electronic Design Automation) :** EDA tools are software applications that facilitate the design, verification, and analysis of electronic systems. These tools include logic synthesis, placement, routing, and timing analysis tools, among others. They automate the design process and help ensure correct functionality and performance of the ASIC.
+- **EDA Tools (Electronic Design Automation) :** EDA tools are software applications that facilitate the design, verification, and analysis of electronic systems. These tools include logic synthesis, placement, routing, and timing analysis tools, among others. They automate the design process and help ensure correct functionality and performance of the ASIC.
 
-**PDK Data (Process Design Kit) :** PDK is a collection of files provided by foundries to model the fabrication process for EDA tools. It acts as an interface between designers and the fabrication team. PDK data consists of several important elements:
+- **PDK Data (Process Design Kit) :** PDK is a collection of files provided by foundries to model the fabrication process for EDA tools. It acts as an interface between designers and the fabrication team. PDK data consists of several important elements:
 
-	- Design Rules : These rules define the geometrical and electrical constraints for designing the layout. They specify guidelines for metal spacing, width, vias, and other layout parameters to ensure proper manufacturability.
+- **Design Rules :** These rules define the geometrical and electrical constraints for designing the layout. They specify guidelines for metal spacing, width, vias, and other layout parameters to ensure proper manufacturability.
 
 	- Device Models : Device models describe the behavior of transistors and other active/passive components in the fabrication process. They provide information about the electrical characteristics, such as voltage-current relationships and capacitances, required for accurate simulation and analysis.
 
 	- Digital Standard Cell Libraries : These libraries contain pre-designed and pre-characterized standard cells, which are the building blocks of digital circuits. They include logic gates, flip-flops, and other commonly used elements. These cells are optimized for area, power, and timing, providing efficient options for circuit implementation.
 
- - I/O Libraries : I/O libraries consist of interface cells designed for communication between the ASIC and the external world. They include input/output buffers, voltage level shifters, and other components to facilitate data transfer.
+	 - I/O Libraries : I/O libraries consist of interface cells designed for communication between the ASIC and the external world. They include input/output buffers, voltage level shifters, and other components to facilitate data transfer.
 
 
-Open Source Digital ASIC Design requires three open-source components:  
+# Open Source Digital ASIC Design requires three open-source components: 
 - **RTL Designs** = github.com, librecores.org, opencores.org
 - **EDA Tools** = OpenROAD, OpenLANE,QFlow  
 - **PDK** = Google + Skywater 130nm Production PDK
