@@ -188,7 +188,7 @@ The  `README.md` describes all configuration variables for every stage and the t
 
 ``` 
 
-After running synthesis, inside the `runs/[date]/results/synthesis` is `ksa16_synthesis.v` which is the mapping of the netlist to standard cell library using ABC. The `runs/[date]/reports/synthesis` will contain synthesis statistic reports and static timing analysis reports. The `runs/[date]/synthesis/logs` contains log files for the terminal output dumps for running yosys and OpenSTA.
+After running synthesis, inside the `runs/[date]/results/synthesis` is `picorv32a_synthesis.v` which is the mapping of the netlist to standard cell library using ABC. The `runs/[date]/reports/synthesis` will contain synthesis statistic reports and static timing analysis reports. The `runs/[date]/synthesis/logs` contains log files for the terminal output dumps for running yosys and OpenSTA.
 
 After the results, we need to calculate the flop ratio.
 ```
@@ -325,7 +325,7 @@ if { [file exists $filename] == 1} {
 - To view floor plan layout in magic
 
 ```
-magic -T /home/ProgramFiles/openlane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef read ksa16.floorplan.def
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef read picorv32a.floorplan.def
 ```  
 
 file:///home/ut01/Documents/FINAL/OPENLANE/KSA16/KSA/KSA_floor%20plan.png![image](https://user-images.githubusercontent.com/113964084/201077516-3f223986-67d5-4125-a71f-5097e6b6ec3c.png)
@@ -352,7 +352,7 @@ The goal of placement is not yet on timing but on congestion. Also, standard cel
 
 
 ```
-magic -T //home/ProgramFiles/openlane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef read ksa16.placement.def
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef read picorv32a.placement.def
 ```  
 
 file:///home/ut01/Documents/FINAL/OPENLANE/KSA16/KSA/KSA16_placement.png![image](https://user-images.githubusercontent.com/113964084/201077018-085aff7c-03e6-4e58-9788-cd90b616b192.png)
@@ -448,7 +448,7 @@ Best reference for this the [Triton Route paper](https://www.google.com/url?sa=t
 
 ### Final Layout:
 ```
-magic -T /home/ProgramFiles/openlane/designs/ksa16/runs/KSA16/results/magic/ksa16.mag
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/ksa16/runs/KSA16/results/magic/picorv32a.mag
 ```
 
 ![ksa_klyout](https://user-images.githubusercontent.com/113964084/201312352-27519981-6de9-4ad6-b188-a3d51b9cd8d9.png)
@@ -496,7 +496,7 @@ The library cell developer must adhere to the rules given on the inputs so that 
 
 Open the def file via magic with no DRC errors: 
 ```
-magic -T /home/ProgramFiles/openlane/designs/ksa16/runs/KSA16/results/magic/ksa16.gds
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/picorv32a/results/magic/picorv21a.gds
 ```
 
 ![KSA16_magic](https://user-images.githubusercontent.com/113964084/201313804-a8cc5644-7dbd-42cc-afcf-501c5a04d055.png)
@@ -504,7 +504,7 @@ magic -T /home/ProgramFiles/openlane/designs/ksa16/runs/KSA16/results/magic/ksa1
 
 ```
 ...........
-DESIGN ksa16 ;
+DESIGN picorv32a ;
 UNITS DISTANCE MICRONS 1000 ;
 DIEAREA ( 0 0 ) ( 1000 1000 ) ;
 ............
