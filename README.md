@@ -334,38 +334,7 @@ Floorplan environment variables or switches:
 
 The command to run floorplan is
 ```
-run floorplan
-```
-Config.tcl file contents for floorplan:
-
-```
-# User config
-set ::env(DESIGN_NAME) ksa16
-
-# Change if needed
-set ::env(VERILOG_FILES) [glob $::env(DESIGN_DIR)/src/*.v]
-
-# Fill this
-set ::env(DESIGN_IS_CORE) 0
-
-set ::env(CLOCK_PORT) "clk"
-set ::env(CLOCK_NET) " "
-
-set ::env(CLOCK_PERIOD) "30.0"
-
-
-#test
-set ::env(FP_CORE_UTIL) "80"
-
-set ::env(FP_SIZING) "absolute"
-set ::env(DIE_AREA) "0.0 0.0 1000.000 1000.000"
-set ::env(CORE_AREA) "5.25 10.88 900.0 900.00"
-
-set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
-if { [file exists $filename] == 1} {
-	source $filename
-}
-
+run_floorplan
 ```
 
 - To view floor plan layout in magic
@@ -496,10 +465,9 @@ Best reference for this the [Triton Route paper](https://www.google.com/url?sa=t
 
 ### Final Layout:
 ```
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/ksa16/runs/KSA16/results/magic/picorv32a.mag
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/04-06_12-18/results/magic/picorv32a.mag
 ```
 
-![ksa_klyout](https://user-images.githubusercontent.com/113964084/201312352-27519981-6de9-4ad6-b188-a3d51b9cd8d9.png)
 
 
 **Library Characterization:**
@@ -562,7 +530,7 @@ The die area here is in database units and 1 micron is equivalent to 1000 databa
 
 
 ```
-/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/final/reports/manufacturability_report.rpt
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/04-06_12-18/reports/manufacturability_report.rpt
 ```
 ```
 Design Name: picorv32a
