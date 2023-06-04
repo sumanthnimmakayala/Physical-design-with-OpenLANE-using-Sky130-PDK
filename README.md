@@ -16,7 +16,7 @@ Physical design is the crucial process of converting a gate-level netlist into a
 
 - **Final Verification and Output :** Once the design passes verification, the output in the form of GDSII (Graphic Data System II) is provided to the fabrication team for the chip manufacturing process. Once the design passes verification, the output in the form of a GDSII file is handed over to the fabrication team for manufacturing. To communicate with computers effectively, it is important to understand the components and processes involved in their functioning. Here is a simplified explanation of key concepts related to computer communication:
 
-	- **QFN-48 Package :** The Quad No Lead 48 (QFN-48) package is a type of integrated circuit (IC) component used in programmable modules and microcomputers. It has a 7x7mm body with 48 pins that connect to the circuit board. The chip sits in the center of the package, which acts as a protective case to safeguard it from damage.
+- **QFN-48 Package :** The Quad No Lead 48 (QFN-48) package is a type of integrated circuit (IC) component used in programmable modules and microcomputers. It has a 7x7mm body with 48 pins that connect to the circuit board. The chip sits in the center of the package, which acts as a protective case to safeguard it from damage.
 
 ### Chip Components :
 
@@ -43,11 +43,11 @@ Digital ASIC design requires several elements to be considered, and here we will
 
 **PDK Data (Process Design Kit) :** PDK is a collection of files provided by foundries to model the fabrication process for EDA tools. It acts as an interface between designers and the fabrication team. PDK data consists of several important elements:
 
- - Design Rules : These rules define the geometrical and electrical constraints for designing the layout. They specify guidelines for metal spacing, width, vias, and other layout parameters to ensure proper manufacturability.
+	- Design Rules : These rules define the geometrical and electrical constraints for designing the layout. They specify guidelines for metal spacing, width, vias, and other layout parameters to ensure proper manufacturability.
 
- - Device Models : Device models describe the behavior of transistors and other active/passive components in the fabrication process. They provide information about the electrical characteristics, such as voltage-current relationships and capacitances, required for accurate simulation and analysis.
+	- Device Models : Device models describe the behavior of transistors and other active/passive components in the fabrication process. They provide information about the electrical characteristics, such as voltage-current relationships and capacitances, required for accurate simulation and analysis.
 
- - Digital Standard Cell Libraries : These libraries contain pre-designed and pre-characterized standard cells, which are the building blocks of digital circuits. They include logic gates, flip-flops, and other commonly used elements. These cells are optimized for area, power, and timing, providing efficient options for circuit implementation.
+	- Digital Standard Cell Libraries : These libraries contain pre-designed and pre-characterized standard cells, which are the building blocks of digital circuits. They include logic gates, flip-flops, and other commonly used elements. These cells are optimized for area, power, and timing, providing efficient options for circuit implementation.
 
  - I/O Libraries : I/O libraries consist of interface cells designed for communication between the ASIC and the external world. They include input/output buffers, voltage level shifters, and other components to facilitate data transfer.
 
