@@ -127,7 +127,17 @@ The  `README.md` describes all configuration variables for every stage and the t
  - System default settings inside `openlane/configurations`
 
 **1. Run OpenLANE:**
- - `$ make mount` = Open the docker platform inside the `openlane/`
+    Go to the OpenLane directory using “ cd ” command.
+    Initiate Docker using : “
+    
+    ```c
+    docker
+    ```
+    
+    The linux prompt would change to “ bash-4.2$ “
+    
+    ![Untitled](Labs%20e5cbc0e146e84fe3a0bf72ced1b84c87/Untitled.png)
+    
  - `% flow.tcl -interactive` = run script for automating the whole RTL to GDSII flow but in step by step `-interactive` mode
  -![1](https://user-images.githubusercontent.com/113964084/201067893-4701a4da-3eb7-428d-bcf5-72c5d082c2e3.png)
  
@@ -168,6 +178,15 @@ The  `README.md` describes all configuration variables for every stage and the t
 ``` 
 
 After running synthesis, inside the `runs/[date]/results/synthesis` is `ksa16_synthesis.v` which is the mapping of the netlist to standard cell library using ABC. The `runs/[date]/reports/synthesis` will contain synthesis statistic reports and static timing analysis reports. The `runs/[date]/synthesis/logs` contains log files for the terminal output dumps for running yosys and OpenSTA.
+
+After the results, we need to calculate the flop ratio.
+```
+flop ratio = (no of flops)/(total no of cells).
+
+dfxtp2 = 1613
+no of cells = 14876
+so flop ratio = 0.10842 or 10.842%
+```
 
 ```
 29. Printing statistics.
@@ -234,6 +253,26 @@ The input and output ports are placed on the space between the core and the die.
 6. Logical Cell Placement Blockage
 This makes sure that the automated placement and routing tool does not place any cell on the pin locations of the die.
 
+Priority order of configuration files to be used by the Openlane flow:
+
+`sky130A_sky130_fd_sc_hd_config.tcl`
+
+`conifg.tcl`
+
+`floorplan.tcl` - System default variables.
+
+The variables we are interested in as of now:
+
+Floorplan environment variables or switches:
+
+1. `FP_CORE_UTIL` - floorplan core utilization
+2. `FP_ASPECT_RATIO` - floorplan aspect ratio
+3. `FP_CORE_MARGIN` - Core to die margin area
+4. `FP_IO_MODE` - defines pin configurations (1 = equidistant/0 = not equidistant)
+5. `FP_CORE_VMETAL` - vertical metal layer
+6. `FP_CORE_HMETAL` - horizontal metal layer
+
+
 **Run floorplan on OpenLane:** 
 
 ```
@@ -270,6 +309,12 @@ magic -T /home/ProgramFiles/openlane/pdks/sky130A/libs.tech/magic/sky130A.tech l
 ```  
 
 file:///home/ut01/Documents/FINAL/OPENLANE/KSA16/KSA/KSA_floor%20plan.png![image](https://user-images.githubusercontent.com/113964084/201077516-3f223986-67d5-4125-a71f-5097e6b6ec3c.png)
+
+``` Utilisation Factor =  (Area occupied by netlist)/(total Area of the core)```
+                   
+``` Aspect Ratio = (height/width) ```
+
+A Utilisation Factor of 1 signifies 100% utilisation leaving no place for routing and extra logic. However, In real scenario, the Utilisation Factor will usually be  0.5-0.6 ie., 50 to 60% of the area is used for macros, standard cells and rest is used for routing, extralogic. Likewise, an Aspect ratio of 1 signifies that the chip is square shaped. Any value other than 1 signifies rectanglular chip.
 
 
 
