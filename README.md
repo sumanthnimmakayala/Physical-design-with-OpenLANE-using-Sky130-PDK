@@ -56,6 +56,7 @@ Open Source Digital ASIC Design requires three open-source components:
 - **RTL Designs** = github.com, librecores.org, opencores.org
 - **EDA Tools** = OpenROAD, OpenLANE,QFlow  
 - **PDK** = Google + Skywater 130nm Production PDK
+
 ![image](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/51ef462d-cbb7-4c86-accc-c4ff26e004c2)
 
 
