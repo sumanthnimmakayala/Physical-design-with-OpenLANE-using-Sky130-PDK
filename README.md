@@ -515,58 +515,49 @@ The die area here is in database units and 1 micron is equivalent to 1000 databa
 
 
 ```
-/home/ProgramFiles/caravel_user_project/openlane/user_proj_example/runs/user_proj_example/reports/manufacturability_report.rpt
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/final/reports/manufacturability_report.rpt
 ```
 ```
-Design Name: user_proj_example
-Run Directory: /project/openlane/user_proj_example/runs/user_proj_example
+Design Name: picorv32a
+Run Directory: /openLANE_flow/designs/picorv32a/runs/picorv32a
 ----------------------------------------
 
 Magic DRC Summary:
-Source: /project/openlane/user_proj_example/runs/user_proj_example/reports/magic/38-magic.drc
+Source: /openLANE_flow/designs/picorv32a/runs/picorv32a/reports/magic/47-magic.drc
 Total Magic DRC violations is 0
 ----------------------------------------
 
 LVS Summary:
-Source: /project/openlane/user_proj_example/runs/user_proj_example/results/lvs/user_proj_example.lvs_parsed.lef.log
+Source: /openLANE_flow/designs/picorv32a/runs/picorv32a/results/lvs/picorv32a.lvs_parsed.lef.log
 LVS reports no net, device, pin, or property mismatches.
 Total errors = 0
 ----------------------------------------
 
 Antenna Summary:
-Source: /project/openlane/user_proj_example/runs/user_proj_example/reports/routing/40-antenna.rpt
+Source: /openLANE_flow/designs/picorv32a/runs/picorv32a/reports/routing/49-antenna.rpt
 Number of pins violated: 0
 Number of nets violated: 0
 ```
-With this Report we place an SoC, So we need to do in Carvel Harness
 
-### Summary in Caravel:
+To ensure proper signal timing and avoid any issues, we need to perform certain steps in the IC design process. One important step is to run post-routing Static Timing Analysis (STA) using the `run_parasitics_sta` command.
 
+Here's what happens during this process:
 
-```
-/home/ProgramFiles/openlane/designs/ksa16/runs/final/reports/manufacturability_report.rpt
-```
-```
-Design Name: ksa16
-Run Directory: /openLANE_flow/designs/ksa16/runs/KSA16
-----------------------------------------
+**Parasitic Extraction:** The first step is to extract the parasitic resistance and capacitance from the design layout. This is done using the Standard Parasitics Extraction Format (SPEF). The extracted SPEF file contains information about the real-world parasitic effects that can impact signal delays.
 
-Magic DRC Summary:
-Source: /openLANE_flow/designs/ksa16/runs/KSA16/reports/magic/47-magic.drc
-Total Magic DRC violations is 0
-----------------------------------------
+**Multi-Corner STA:** Once the parasitic extraction is complete, we perform STA using the extracted SPEF. Multi-corner STA involves analyzing the timing behavior of the design under different corner conditions. It considers three corners: `minimum, maximum, and nominal`. By examining the timing in these different scenarios, we can ensure that the design meets the required timing constraints.
 
-LVS Summary:
-Source: /openLANE_flow/designs/ksa16/runs/KSA16/results/lvs/ksa16.lvs_parsed.lef.log
-LVS reports no net, device, pin, or property mismatches.
-Total errors = 0
-----------------------------------------
+**Slack Analysis:** The introduction of real-world parasitics can potentially worsen the slack, which is the timing margin between the required and actual arrival times of signals. Both setup and hold slack can be affected. Setup slack refers to the time difference between the launch and capture of signals, while hold slack refers to the time for which a signal must be held stable. It is important to ensure that the slack is within acceptable levels for proper circuit functionality.
 
-Antenna Summary:
-Source: /openLANE_flow/designs/ksa16/runs/KSA16/reports/routing/49-antenna.rpt
-Number of pins violated: 0
-Number of nets violated: 0
-```
+**SPEF and STA Logs:** The results of the SPEF extraction and STA analysis can be found in the designated directories. The extracted SPEF file is typically located under `runs/picorv32a/results/routing`, while the STA log files are stored in `runs/picorv32a/logs/signoff`. These logs provide detailed information about timing violations, slack values, and other relevant data for analysis.
+
+**Timing ECO:** If the slack values are not within the desired levels, a Timing Engineering Change Order (ECO) can be performed. This involves making adjustments to the design, such as tweaking the netlist or modifying the routing, to improve the slack and meet the required timing constraints.
+
+Once the post-routing STA and timing ECO are completed, the final step is to generate the GDSII (Graphic Data System II) file for fabrication. This is done by running run_magic, which utilizes Magic to create the GDSII file. The resulting GDSII file, located at `runs/picorv32a/results/signoff/picorv32a.gds`, can be further processed or sent for manufacturing.
+
+![finalgds](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/d3522ee3-6445-469c-9d6e-b08e6ef1ad6a)
+
+![gdsII](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/5e9d0e35-9ab3-4976-9beb-0c4835027407)
 
 
 # Caravel User Project
