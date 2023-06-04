@@ -283,6 +283,8 @@ so flop ratio = 0.10842 or 10.842%
 **3. Yosys synthesis:**
 
 ![yoys](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/548d5f26-13c9-4d89-9444-6834464e810a)
+
+Yosys synthesis Zoom
 ![yoys_zoom](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/589ad10f-388c-4948-9c3f-799ccb03ca35)
 
 
