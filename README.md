@@ -380,13 +380,14 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 ```
 Placement Analysis
----------------------------------
-total displacement          0.0 u
-average displacement        0.0 u
-max displacement            0.0 u
-original HPWL           38587.4 u
-legalized HPWL          38757.8 u
-delta HPWL                    0 %
+--------------------------------
+total displacement        0.0 u
+average displacement      0.0 u
+max displacement          0.0 u
+original HPWL        766080.0 u
+legalized HPWL       779196.5 u
+delta HPWL                  2 %
+
 ```
 
 Placement is done on two stages:
@@ -492,9 +493,9 @@ ngspice 1 ->
 
 4. To analyze the cell's slew rate and propagation delay, we will examine the transient response of the circuit. Specifically, we will focus on the rise transition. By studying this transition, we can gain insights into the cell's performance characteristics.
 
-The rise transition is a critical parameter that helps us understand how quickly the output signal can change from a low voltage level to a high voltage level. It is measured by calculating the time it takes for the output to make this transition between the specified voltage thresholds.
+	The rise transition is a critical parameter that helps us understand how quickly the output signal can change from a low voltage level to a high voltage level. It is measured by calculating the time it takes for the output to make this transition between the specified voltage thresholds.
 
-By analyzing the rise transition, we can determine two important characteristics of the cell:
+	By analyzing the rise transition, we can determine two important characteristics of the cell:
 
 - Slew Rate: The slew rate indicates how fast the output voltage changes over time during the rise transition. It is calculated by dividing the voltage difference (2.64V - 0.66V) by the time taken for the transition. A higher slew rate implies a faster transition, indicating a more efficient and responsive cell.
 
@@ -541,6 +542,8 @@ OpenLane routing stage consists of two stages:
 Command used : ```run_routing```
 
 Routing resources analysis :
+
+
 ```
 Routing resources analysis :===============================
 [INFO GRT-0053] Routing resources analysis:
@@ -570,7 +573,22 @@ met5             41184             0            0.00%             0 /  0 /  0
 ---------------------------------------------------------------------------------------
 Total          1056757          5544            0.52%             0 /  0 /  0
 ```
+```
+Final usage/overflow report: 
 
+[Overflow Report] Total Usage   : 118927
+[Overflow Report] Total Capacity: 374321
+[Overflow Report] Max H Overflow: 0
+[Overflow Report] Max V Overflow: 0
+[Overflow Report] Max Overflow  : 0
+[Overflow Report] H   Overflow  : 0
+[Overflow Report] V   Overflow  : 0
+[Overflow Report] Final Overflow: 0
+
+[INFO] Final usage          : 118927
+[INFO] Final number of vias : 70454
+[INFO] Final usage 3D       : 330289
+```
 Best reference for this the [Triton Route paper](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiHkP7pnZj6AhUFHqYKHcBlC3UQFnoECBEQAQ&url=https%3A%2F%2Fvlsicad.ucsd.edu%2FPublications%2FConferences%2F363%2Fc363.pdf&usg=AOvVaw0ywnaeyGqzqAjI6TaJnamd).
 
 ### Final Layout:
