@@ -321,11 +321,16 @@ if { [file exists $filename] == 1} {
 }
 
 ```
+
+- To view floor plan layout in magic
+
 ```
 magic -T /home/ProgramFiles/openlane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef read ksa16.floorplan.def
 ```  
 
 file:///home/ut01/Documents/FINAL/OPENLANE/KSA16/KSA/KSA_floor%20plan.png![image](https://user-images.githubusercontent.com/113964084/201077516-3f223986-67d5-4125-a71f-5097e6b6ec3c.png)
+
+The utilisation factor and aspect ratio considered for the design are as follows :
 
 ``` Utilisation Factor =  (Area occupied by netlist)/(total Area of the core)```
                    
