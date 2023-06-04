@@ -282,8 +282,9 @@ so flop ratio = 0.10842 or 10.842%
 
 **3. Yosys synthesis:**
 
+![yoys](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/548d5f26-13c9-4d89-9444-6834464e810a)
+![yoys_zoom](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/589ad10f-388c-4948-9c3f-799ccb03ca35)
 
-![_yoys](https://user-images.githubusercontent.com/113964084/201079457-b5494078-f4f3-45f3-9e87-cf4ec6d49f43.png)
 
 
 ### Floorplan Stage:
