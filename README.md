@@ -460,7 +460,8 @@ run
 ```
 
 3. Open the spice file by typing ``ngspice sky130A_inv.spice``. And Generate a graph using ``plot y vs time a`` :
-``
+
+````
 Circuit:** spice3 file created from sky130_inv.ext - technology: 
 
 Scale set
@@ -486,7 +487,7 @@ No. of Data Rows: 160
 ngspice 1 -> plot y vs time a 
 ngspice 1 ->
 
-``
+````
 ![graph](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/110390e3-e5f6-460e-a5be-3bff982068c9)
 
 4. To analyze the cell's slew rate and propagation delay, we will examine the transient response of the circuit. Specifically, we will focus on the rise transition. By studying this transition, we can gain insights into the cell's performance characteristics.
@@ -499,21 +500,26 @@ By analyzing the rise transition, we can determine two important characteristics
 
 - Propagation Delay: The propagation delay measures the time it takes for the output signal to propagate from the input to the output of the cell during the rise transition. It is calculated by subtracting the delay caused by the input from the total rise transition time. The propagation delay provides insights into the cell's speed and responsiveness.
 
-	- Rise Transition output transition time from 20%(0.66V) to 80%(2.64V):
-	 `Tr_r = 2.19981 ns - 2.15739 ns = 0.04242 ns`
-	- Fall Transition output transition time from 80%(2.64V) to 20%(0.66V):
-	 `Tr_f = 4.0672 ns - 4.04007 ns = 0.02713 ns`
-	- Rise Delay delay between 50%(1.65V) of input to 50%(1.65V) of output:
-	 `D_r = 2.18197 ns - 2.15003 ns = 0.03194 ns`
-	- Fall Delay delay between 50%(1.65V) of input to 50%(1.65V) of output:
-	 `D_f = 4.05364 ns - 4.05001 ns =0.00363 ns`
+	- Rise Transition output transition time from 0.66V(20%) to 2.64V(80%):
+	
+	 ```Tr_r = 2.19981 ns - 2.15739 ns = 0.04242 ns```
+	- Fall Transition output transition time from 2.64V(80%) to 0.66V(20%):
+	
+	 ```Tr_f = 4.0672 ns - 4.04007 ns = 0.02713 ns```
+	- Rise Delay delay between 1.65V(50%) of input to 1.65V(50%) of output:
+
+
+	 ```D_r = 2.18197 ns - 2.15003 ns = 0.03194 ns```
+	- Fall Delay delay between 1.65V(50%) of input to 1.65V(50%) of output:
+
+	 ```D_f = 4.05364 ns - 4.05001 ns =0.00363 ns```
 	
 ### Routing Stage: 
 One simple routing algorithm is Maze Routing or Lee's routing:
 - The shortest path is one that follows a steady increment of one (1-to-9 on the example below). There might be multiple path like this but the best path that the tool will choose is one with less bends. The route should not be diagonal and must not overlap an obstruction such as macros. 
 - This algorithm however has high run time and consume a lot of memory thus more optimized routing algorithm is preferred (but the principles stays the same where route with shortest path and less bends is preferred) 
 
-***DRC Cleaning:***
+**DRC Cleaning:**
 DRC cleaning is the next step after routing. DRC cleaning is done to ensure the routes can be fabricated and printed in silicon faithfully. Most DRC is due to the constraints of the photolitographic machine for chip fabrication where the wavelength of light used is limited. There are thousands of DRC and some DRC are:
 1. Minimum wire width
 2. Minimum wire pitch (center to center spacing)
