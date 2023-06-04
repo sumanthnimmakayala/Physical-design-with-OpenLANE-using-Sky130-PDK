@@ -164,28 +164,33 @@ The  `README.md` describes all configuration variables for every stage and the t
 **3. Run synthesis:**
  - `% run_synthesis` = Run yosys RTL synthesis, ABC scripts (for technology mapping), and OpenSTA.  
 
- 
-21. Printing statistics.
+``` 
+20. Printing statistics.
 
-```  
 === picorv32a ===
 
-   Number of wires:                168
-   Number of wire bits:            213
-   Number of public wires:           5
-   Number of public wire bits:      50
+   Number of wires:              22926
+   Number of wire bits:          25811
+   Number of public wires:         162
+   Number of public wire bits:    1972
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                180
-     $_ANDNOT_                      29
-     $_AND_                         11
-     $_NAND_                        24
-     $_NOR_                          6
-     $_ORNOT_                        1
-     $_OR_                          77
-     $_XNOR_                        14
-     $_XOR_                         18
+   Number of cells:              18036
+     $_ANDNOT_                    4010
+     $_AND_                       1159
+     $_MUX_                       1664
+     $_NAND_                       896
+     $_NOR_                        560
+     $_NOT_                        977
+     $_ORNOT_                      244
+     $_OR_                        2391
+     $_XNOR_                       615
+     $_XOR_                       2462
+     sky130_fd_sc_hd__dfxtp_2     1613
+     sky130_fd_sc_hd__mux2_1      1224
+     sky130_fd_sc_hd__mux4_1       221
+
 
 ``` 
 
@@ -201,47 +206,84 @@ so flop ratio = 0.10842 or 10.842%
 ```
 
 ```
-29. Printing statistics.
+28. Printing statistics.
 
-=== ksa16 ===
+=== picorv32a ===
 
-   Number of wires:                116
-   Number of wire bits:            161
-   Number of public wires:           5
-   Number of public wire bits:      50
+   Number of wires:              14596
+   Number of wire bits:          14978
+   Number of public wires:        1565
+   Number of public wire bits:    1947
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                128
-     sky130_fd_sc_hd__a211o_2        1
-     sky130_fd_sc_hd__a22o_2        17
-     sky130_fd_sc_hd__a2bb2o_2      10
-     sky130_fd_sc_hd__a2bb2oi_2      8
-     sky130_fd_sc_hd__a31o_2         3
-     sky130_fd_sc_hd__a31oi_2        1
-     sky130_fd_sc_hd__inv_2         25
-     sky130_fd_sc_hd__nand2_2        2
-     sky130_fd_sc_hd__nand3_2        1
-     sky130_fd_sc_hd__nor2_2         1
-     sky130_fd_sc_hd__nor3_2         1
-     sky130_fd_sc_hd__o21a_2         8
-     sky130_fd_sc_hd__o21ai_2       10
-     sky130_fd_sc_hd__o221a_2        7
-     sky130_fd_sc_hd__o22a_2         8
-     sky130_fd_sc_hd__o2bb2a_2       3
-     sky130_fd_sc_hd__o31a_2         4
-     sky130_fd_sc_hd__o41a_2         1
-     sky130_fd_sc_hd__or2_2         10
-     sky130_fd_sc_hd__or3_2          6
-     sky130_fd_sc_hd__or4_2          1
+   Number of cells:              14876
+     sky130_fd_sc_hd__a2111o_2       1
+     sky130_fd_sc_hd__a211o_2       35
+     sky130_fd_sc_hd__a211oi_2      60
+     sky130_fd_sc_hd__a21bo_2      149
+     sky130_fd_sc_hd__a21boi_2       8
+     sky130_fd_sc_hd__a21o_2        57
+     sky130_fd_sc_hd__a21oi_2      244
+     sky130_fd_sc_hd__a221o_2       86
+     sky130_fd_sc_hd__a22o_2      1013
+     sky130_fd_sc_hd__a2bb2o_2    1748
+     sky130_fd_sc_hd__a2bb2oi_2     81
+     sky130_fd_sc_hd__a311o_2        2
+     sky130_fd_sc_hd__a31o_2        49
+     sky130_fd_sc_hd__a31oi_2        7
+     sky130_fd_sc_hd__a32o_2        46
+     sky130_fd_sc_hd__a41o_2         1
+     sky130_fd_sc_hd__and2_2       157
+     sky130_fd_sc_hd__and3_2        58
+     sky130_fd_sc_hd__and4_2       345
+     sky130_fd_sc_hd__and4b_2        1
+     sky130_fd_sc_hd__buf_1       1656
+     sky130_fd_sc_hd__buf_2          8
+     sky130_fd_sc_hd__conb_1        42
+     sky130_fd_sc_hd__dfxtp_2     1613
+     sky130_fd_sc_hd__inv_2       1615
+     sky130_fd_sc_hd__mux2_1      1224
+     sky130_fd_sc_hd__mux2_2         2
+     sky130_fd_sc_hd__mux4_1       221
+     sky130_fd_sc_hd__nand2_2       78
+     sky130_fd_sc_hd__nor2_2       524
+     sky130_fd_sc_hd__nor2b_2        1
+     sky130_fd_sc_hd__nor3_2        42
+     sky130_fd_sc_hd__nor4_2         1
+     sky130_fd_sc_hd__o2111a_2       2
+     sky130_fd_sc_hd__o211a_2       69
+     sky130_fd_sc_hd__o211ai_2       6
+     sky130_fd_sc_hd__o21a_2        54
+     sky130_fd_sc_hd__o21ai_2      141
+     sky130_fd_sc_hd__o21ba_2      209
+     sky130_fd_sc_hd__o21bai_2       1
+     sky130_fd_sc_hd__o221a_2      204
+     sky130_fd_sc_hd__o221ai_2       7
+     sky130_fd_sc_hd__o22a_2      1312
+     sky130_fd_sc_hd__o22ai_2       59
+     sky130_fd_sc_hd__o2bb2a_2     119
+     sky130_fd_sc_hd__o2bb2ai_2     92
+     sky130_fd_sc_hd__o311a_2        8
+     sky130_fd_sc_hd__o31a_2        19
+     sky130_fd_sc_hd__o31ai_2        1
+     sky130_fd_sc_hd__o32a_2       109
+     sky130_fd_sc_hd__o41a_2         2
+     sky130_fd_sc_hd__or2_2       1088
+     sky130_fd_sc_hd__or2b_2        25
+     sky130_fd_sc_hd__or3_2         68
+     sky130_fd_sc_hd__or3b_2         5
+     sky130_fd_sc_hd__or4_2         93
+     sky130_fd_sc_hd__or4b_2         6
+     sky130_fd_sc_hd__or4bb_2        2
 
-   Chip area for module '\ksa16': 1103.558400
+   Chip area for module '\picorv32a': 147712.918400
 ```
 
 **3. Yosys synthesis:**
 
 
-![KSA16_yoys](https://user-images.githubusercontent.com/113964084/201079457-b5494078-f4f3-45f3-9e87-cf4ec6d49f43.png)
+![_yoys](https://user-images.githubusercontent.com/113964084/201079457-b5494078-f4f3-45f3-9e87-cf4ec6d49f43.png)
 
 
 ### Floorplan Stage:
@@ -499,11 +541,10 @@ The library cell developer must adhere to the rules given on the inputs so that 
 
 Open the def file via magic with no DRC errors: 
 ```
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/picorv32a/results/magic/picorv21a.gds
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/04-06_12-18/runs/picorv32a/results/magic/picorv21a.gds
 ```
 
-![KSA16_magic](https://user-images.githubusercontent.com/113964084/201313804-a8cc5644-7dbd-42cc-afcf-501c5a04d055.png)
-
+![drc](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/ac519125-1768-468e-9ea7-96011283ecba)
 
 ```
 ...........
@@ -522,24 +563,29 @@ The die area here is in database units and 1 micron is equivalent to 1000 databa
 ```
 ```
 Design Name: picorv32a
-Run Directory: /openLANE_flow/designs/picorv32a/runs/picorv32a
+[INFO]: Calculating Runtime From the Start...
+[INFO]: Flow completed for picorv32a/04-06_12-18 in 1h9m19s
+[INFO]: Generating Final Summary Report...
+[INFO]: Design Name: picorv32a
+Run Directory: /openLANE_flow/designs/picorv32a/runs/04-06_12-18
 ----------------------------------------
 
 Magic DRC Summary:
-Source: /openLANE_flow/designs/picorv32a/runs/picorv32a/reports/magic/47-magic.drc
+Source: /openLANE_flow/designs/picorv32a/runs/04-06_12-18/reports/magic//39-magic.drc
 Total Magic DRC violations is 0
 ----------------------------------------
 
 LVS Summary:
-Source: /openLANE_flow/designs/picorv32a/runs/picorv32a/results/lvs/picorv32a.lvs_parsed.lef.log
+Source: /openLANE_flow/designs/picorv32a/runs/04-06_12-18/results/lvs/picorv32a.lvs_parsed.lef.log
 LVS reports no net, device, pin, or property mismatches.
 Total errors = 0
 ----------------------------------------
 
 Antenna Summary:
-Source: /openLANE_flow/designs/picorv32a/runs/picorv32a/reports/routing/49-antenna.rpt
-Number of pins violated: 0
-Number of nets violated: 0
+Source: /openLANE_flow/designs/picorv32a/runs/04-06_12-18/reports/routing//41-antenna.rpt
+Number of pins violated: 154
+Number of nets violated: 129
+[SUCCESS]: Flow Completed Without Fatal Errors.
 ```
 
 To ensure proper signal timing and avoid any issues, we need to perform certain steps in the IC design process. One important step is to run post-routing Static Timing Analysis (STA) using the `run_parasitics_sta` command.
@@ -552,10 +598,10 @@ Here's what happens during this process:
 
 - **Slack Analysis:** The introduction of real-world parasitics can potentially worsen the slack, which is the timing margin between the required and actual arrival times of signals. Both setup and hold slack can be affected. Setup slack refers to the time difference between the launch and capture of signals, while hold slack refers to the time for which a signal must be held stable. It is important to ensure that the slack is within acceptable levels for proper circuit functionality.
 
-- **SPEF and STA Logs:** The results of the SPEF extraction and STA analysis can be found in the designated directories. The extracted SPEF file is typically located under `runs/picorv32a/results/routing`, while the STA log files are stored in `runs/picorv32a/logs/signoff`. These logs provide detailed information about timing violations, slack values, and other relevant data for analysis.
+- **SPEF and STA Logs:** The results of the SPEF extraction and STA analysis can be found in the designated directories. The extracted SPEF file is typically located under `runs/picorv32a/results/routing`, while the STA log files are stored in `runs/04-06_12-18/logs/signoff`. These logs provide detailed information about timing violations, slack values, and other relevant data for analysis.
 
 - **Timing ECO:** If the slack values are not within the desired levels, a Timing Engineering Change Order (ECO) can be performed. This involves making adjustments to the design, such as tweaking the netlist or modifying the routing, to improve the slack and meet the required timing constraints.
 
-Once the post-routing STA and timing ECO are completed, the final step is to generate the GDSII (Graphic Data System II) file for fabrication. This is done by running run_magic, which utilizes Magic to create the GDSII file. The resulting GDSII file, located at `runs/picorv32a/results/signoff/picorv32a.gds`, can be further processed or sent for manufacturing.
+Once the post-routing STA and timing ECO are completed, the final step is to generate the GDSII (Graphic Data System II) file for fabrication. This is done by running run_magic, which utilizes Magic to create the GDSII file. The resulting GDSII file, located at `runs/04-06_12-18/results/signoff/picorv32a.gds`, can be further processed or sent for manufacturing.
 
 ![finalgds](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/d3522ee3-6445-469c-9d6e-b08e6ef1ad6a)
