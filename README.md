@@ -329,7 +329,11 @@ if { [file exists $filename] == 1} {
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef read picorv32a.floorplan.def
 ```  
 
-file:///home/ut01/Documents/FINAL/OPENLANE/KSA16/KSA/KSA_floor%20plan.png![image](https://user-images.githubusercontent.com/113964084/201077516-3f223986-67d5-4125-a71f-5097e6b6ec3c.png)
+![floorplan](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/1e0a4353-33e8-4dac-8679-7b212b89ef30)
+
+Standard cells at the bottom left corner.
+
+![standardcells](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/7e2c221b-7a6c-4371-9a1f-155d79bdab01)
 
 The utilisation factor and aspect ratio considered for the design are as follows :
 
@@ -355,12 +359,10 @@ The goal of placement is not yet on timing but on congestion. Also, standard cel
 ```
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef read picorv32a.placement.def
 ```  
+![placement](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/1e11ca36-e2c1-4db4-bbec-f6b9a6202fe0)
 
-file:///home/ut01/Documents/FINAL/OPENLANE/KSA16/KSA/KSA16_placement.png![image](https://user-images.githubusercontent.com/113964084/201077018-085aff7c-03e6-4e58-9788-cd90b616b192.png)
 
-![KSA16_placement zoom2](https://user-images.githubusercontent.com/113964084/201089931-3207c969-c239-471b-85d0-c25cf020416b.png)
-
-![KSA16_placement zoom3](https://user-images.githubusercontent.com/113964084/201089948-9e31e8d4-85c0-4bb4-89fa-d18a7ce19261.png)
+![placement zoom3](https://user-images.githubusercontent.com/113964084/201089948-9e31e8d4-85c0-4bb4-89fa-d18a7ce19261.png)
 
 ```
 Placement Analysis
