@@ -286,6 +286,12 @@ Floorplan environment variables or switches:
 
 **Run floorplan on OpenLane:** 
 
+The command to run floorplan is
+```
+run floorplan
+```
+Config.tcl file contents for floorplan:
+
 ```
 # User config
 set ::env(DESIGN_NAME) ksa16
