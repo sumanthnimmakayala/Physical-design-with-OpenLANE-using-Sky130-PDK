@@ -43,13 +43,13 @@ EDA Tools (Electronic Design Automation): EDA tools are software applications th
 
 PDK Data (Process Design Kit): PDK is a collection of files provided by foundries to model the fabrication process for EDA tools. It acts as an interface between designers and the fabrication team. PDK data consists of several important elements:
 
-a. Design Rules: These rules define the geometrical and electrical constraints for designing the layout. They specify guidelines for metal spacing, width, vias, and other layout parameters to ensure proper manufacturability.
+- Design Rules: These rules define the geometrical and electrical constraints for designing the layout. They specify guidelines for metal spacing, width, vias, and other layout parameters to ensure proper manufacturability.
 
-b. Device Models: Device models describe the behavior of transistors and other active/passive components in the fabrication process. They provide information about the electrical characteristics, such as voltage-current relationships and capacitances, required for accurate simulation and analysis.
+- Device Models: Device models describe the behavior of transistors and other active/passive components in the fabrication process. They provide information about the electrical characteristics, such as voltage-current relationships and capacitances, required for accurate simulation and analysis.
 
-c. Digital Standard Cell Libraries: These libraries contain pre-designed and pre-characterized standard cells, which are the building blocks of digital circuits. They include logic gates, flip-flops, and other commonly used elements. These cells are optimized for area, power, and timing, providing efficient options for circuit implementation.
+- Digital Standard Cell Libraries: These libraries contain pre-designed and pre-characterized standard cells, which are the building blocks of digital circuits. They include logic gates, flip-flops, and other commonly used elements. These cells are optimized for area, power, and timing, providing efficient options for circuit implementation.
 
-d. I/O Libraries: I/O libraries consist of interface cells designed for communication between the ASIC and the external world. They include input/output buffers, voltage level shifters, and other components to facilitate data transfer.
+- I/O Libraries: I/O libraries consist of interface cells designed for communication between the ASIC and the external world. They include input/output buffers, voltage level shifters, and other components to facilitate data transfer.
 
 
 Open Source Digital ASIC Design requires three open-source components:  
