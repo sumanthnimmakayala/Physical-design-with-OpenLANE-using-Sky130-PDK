@@ -55,13 +55,15 @@ Digital ASIC design requires several elements to be considered, and here we will
 Open Source Digital ASIC Design requires three open-source components:  
 - **RTL Designs** = github.com, librecores.org, opencores.org
 - **EDA Tools** = OpenROAD, OpenLANE,QFlow  
-- **PDK** = Google + Skywater 130nm Production PDK![image](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/51ef462d-cbb7-4c86-accc-c4ff26e004c2)
+- **PDK** = Google + Skywater 130nm Production PDK
+![image](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/51ef462d-cbb7-4c86-accc-c4ff26e004c2)
 
 
 **PDK (Process Design Kit)** = A set of data files and documents which serves as the interface between the designer and the fab. This includes cell libraries, IO libraries, design rules (DRC, LVS, etc.)
 
 ### Simplified RTL to GDSII Flow:
-![image](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/28bf0139-48b0-4e59-a270-f369e86c2829)
+![image](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/e2e2773d-472e-44f9-b046-8d81e8485688)
+
 
 - **Sythesis** = The RTL is converted into a gate level netlist made up of components of standard cell libary. 
 
