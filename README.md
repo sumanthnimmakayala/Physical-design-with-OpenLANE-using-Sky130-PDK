@@ -29,6 +29,7 @@ Physical design is the crucial process of converting a gate-level netlist into a
 - **Foundry IPs and Macros :** Inside the core, there are blocks called foundry IPs, which are built using intelligence and are manufactured using a foundry. Macros, on the other hand, are pure digital logic blocks.
 
 ### RISC-V Instruction Set Architecture (ISA) :
+
 The RISC-V ISA is a language that enables communication between software and hardware. When we have a C program that needs to run on a computer with a specific layout, we follow a particular flow. The C program is first compiled into an assembly language program (RISC-V), and then converted into a binary format. This binary format is executed as a layout. To facilitate this execution, a hardware description language is used as an interface between the architecture and the layout. The architecture is implemented using Register Transfer Level (RTL), and the Place and Route (PnR) process generates the layout as an output.
 
 Remember, effective communication with computers involves understanding the various components, their interactions, and the specific languages and processes required to translate and execute programs on hardware.
@@ -194,7 +195,7 @@ The  `README.md` describes all configuration variables for every stage and the t
 
 ``` 
 
-After running synthesis, inside the `runs/[date]/results/synthesis` is `picorv32a_synthesis.v` which is the mapping of the netlist to standard cell library using ABC. The `runs/[date]/reports/synthesis` will contain synthesis statistic reports and static timing analysis reports. The `runs/[date]/synthesis/logs` contains log files for the terminal output dumps for running yosys and OpenSTA.
+After running synthesis, inside the `runs/04-06_12-18/results/synthesis` is `picorv32a_synthesis.v` which is the mapping of the netlist to standard cell library using ABC. The `runs/04-06_12-18/reports/synthesis` will contain synthesis statistic reports and static timing analysis reports. The `runs/04-06_12-18/synthesis/logs` contains log files for the terminal output dumps for running yosys and OpenSTA.
 
 After the results, we need to calculate the flop ratio.
 ```
