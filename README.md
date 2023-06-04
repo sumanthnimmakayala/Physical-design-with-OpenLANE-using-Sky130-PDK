@@ -63,7 +63,7 @@ Open Source Digital ASIC Design requires three open-source components:
 **PDK (Process Design Kit)** = A set of data files and documents which serves as the interface between the designer and the fab. This includes cell libraries, IO libraries, design rules (DRC, LVS, etc.)
 
 ### Simplified RTL to GDSII Flow:
-![image](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/819708de-3755-47b5-b637-33f1ca0f385c)
+![image](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/442fcba2-be5b-4432-8720-37a49f9bce35)
 
 
 - **Sythesis** = The RTL is converted into a gate level netlist made up of components of standard cell libary. 
