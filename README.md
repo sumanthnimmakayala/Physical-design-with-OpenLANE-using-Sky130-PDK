@@ -2,24 +2,24 @@
 
 Physical design is the crucial process of converting a gate-level netlist into a manufacturable physical layout. It involves several steps to ensure a high-quality chip design.
 
-Partitioning: The design is divided into smaller functional blocks called macros. This helps minimize connections between macros by placing related blocks close to each other.
+**Partitioning**: The design is divided into smaller functional blocks called macros. This helps minimize connections between macros by placing related blocks close to each other.
 
-Floor planning: This step is critical as it determines the shape, size, and overall quality of the chip. The floor plan defines the layout of macros, halos/blockages, I/O pins, and pre-placed cells according to specific guidelines.
+**Floor planning**: This step is critical as it determines the shape, size, and overall quality of the chip. The floor plan defines the layout of macros, halos/blockages, I/O pins, and pre-placed cells according to specific guidelines.
 
-Power planning: To distribute power evenly to all cells, a power grid is created. Power is drawn from the supply to power rings, then to stripes, and finally through rails to the standard cells.
+**Power planning**: To distribute power evenly to all cells, a power grid is created. Power is drawn from the supply to power rings, then to stripes, and finally through rails to the standard cells.
 
-Placement: Standard cells are placed within the chip's core. Coarse placement roughly positions cells within modules, allowing for overlap. Detailed placement ensures that cells are placed in site rows without overlap or congestion, using blockages/halos.
+**Placement**: Standard cells are placed within the chip's core. Coarse placement roughly positions cells within modules, allowing for overlap. Detailed placement ensures that cells are placed in site rows without overlap or congestion, using blockages/halos.
 
-Clock Tree Synthesis (CTS): In sequential designs, the clock plays a crucial role. CTS propagates the clock signal to each clock sink with minimal skew and insertion delay. Clock buffers and inverters are inserted along the clock path. Clock balancing is achieved through H-tree methodology to meet timing and power requirements.
+**Clock Tree Synthesis (CTS)**: In sequential designs, the clock plays a crucial role. CTS propagates the clock signal to each clock sink with minimal skew and insertion delay. Clock buffers and inverters are inserted along the clock path. Clock balancing is achieved through H-tree methodology to meet timing and power requirements.
 
-Routing: This stage physically connects the cells using metal straps. Actual interconnect delays are determined during routing. Prior to this stage, connections are logical through trail routing. After detailed routing, the design undergoes verification for design rule checks (DRC) and layout-versus-schematic checks (LVS).
+**Routing**: This stage physically connects the cells using metal straps. Actual interconnect delays are determined during routing. Prior to this stage, connections are logical through trail routing. After detailed routing, the design undergoes verification for design rule checks (DRC) and layout-versus-schematic checks (LVS).
 
-Final Verification and Output: Once the design passes verification, the output in the form of GDSII (Graphic Data System II) is provided to the fabrication team for the chip manufacturing process.
+**Final Verification and Output**: Once the design passes verification, the output in the form of GDSII (Graphic Data System II) is provided to the fabrication team for the chip manufacturing process.
 
 Once the design passes verification, the output in the form of a GDSII file is handed over to the fabrication team for manufacturing.
 To communicate with computers effectively, it is important to understand the components and processes involved in their functioning. Here is a simplified explanation of key concepts related to computer communication:
 
-QFN-48 Package: The Quad No Lead 48 (QFN-48) package is a type of integrated circuit (IC) component used in programmable modules and microcomputers. It has a 7x7mm body with 48 pins that connect to the circuit board. The chip sits in the center of the package, which acts as a protective case to safeguard it from damage.
+**QFN-48 Package**: The Quad No Lead 48 (QFN-48) package is a type of integrated circuit (IC) component used in programmable modules and microcomputers. It has a 7x7mm body with 48 pins that connect to the circuit board. The chip sits in the center of the package, which acts as a protective case to safeguard it from damage.
 
 Chip Components:
 
