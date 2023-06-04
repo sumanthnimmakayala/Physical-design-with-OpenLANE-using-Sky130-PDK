@@ -1,18 +1,20 @@
 # Physical-design-with-OpenLANE-using-Sky130-PDK
 
-Physical design is the crucial process of converting a gate-level netlist into a manufacturable physical layout. It involves several steps to ensure the quality and functionality of the chip.
+Physical design is the crucial process of converting a gate-level netlist into a manufacturable physical layout. It involves several steps to ensure a high-quality chip design.
 
-The first step is partitioning, which involves dividing the design into smaller functional blocks called macros. This helps minimize connections between macros by locating similar blocks close to each other.
+Partitioning: The design is divided into smaller functional blocks called macros. This helps minimize connections between macros by placing related blocks close to each other.
 
-Floor planning is a critical stage where the shape and size of the chip, known as the die, are determined. The quality of the chip depends on a well-designed floorplan. Macros, halos/blockages, I/O pins, and pre-placed cells are positioned according to the floorplan guidelines.
+Floor planning: This step is critical as it determines the shape, size, and overall quality of the chip. The floor plan defines the layout of macros, halos/blockages, I/O pins, and pre-placed cells according to specific guidelines.
 
-Power planning is essential to provide equal power distribution to all cells in the design. A power grid is created to draw power from the supply to power rings, stripes, and ultimately to the standard cells.
+Power planning: To distribute power evenly to all cells, a power grid is created. Power is drawn from the supply to power rings, then to stripes, and finally through rails to the standard cells.
 
-Placement involves placing all the standard cells within the chip's core. Coarse placement roughly positions cells in the core, allowing for overlap. Detailed placement ensures non-overlapping and reduced congestion by placing cells in site rows and utilizing blockages/halos.
+Placement: Standard cells are placed within the chip's core. Coarse placement roughly positions cells within modules, allowing for overlap. Detailed placement ensures that cells are placed in site rows without overlap or congestion, using blockages/halos.
 
-Clock Tree Synthesis (CTS) focuses on propagating the clock signal to all clock sinks with minimal skew and insertion delay. Clock buffers and inverters are inserted along the clock path to achieve this goal. Clock balancing is achieved through H-tree methodology, aiming to meet timing and power requirements.
+Clock Tree Synthesis (CTS): In sequential designs, the clock plays a crucial role. CTS propagates the clock signal to each clock sink with minimal skew and insertion delay. Clock buffers and inverters are inserted along the clock path. Clock balancing is achieved through H-tree methodology to meet timing and power requirements.
 
-Routing physically connects cells using metal straps. It reveals the actual interconnect delays, unlike the logical connections made during trail routing. After detailed routing, the design undergoes checks for design rule compliance (DRC) and layout versus schematic (LVS) verification.
+Routing: This stage physically connects the cells using metal straps. Actual interconnect delays are determined during routing. Prior to this stage, connections are logical through trail routing. After detailed routing, the design undergoes verification for design rule checks (DRC) and layout-versus-schematic checks (LVS).
+
+Final Verification and Output: Once the design passes verification, the output in the form of GDSII (Graphic Data System II) is provided to the fabrication team for the chip manufacturing process.
 
 Once the design passes verification, the output in the form of a GDSII file is handed over to the fabrication team for manufacturing.
 To communicate with computers effectively, it is important to understand the components and processes involved in their functioning. Here is a simplified explanation of key concepts related to computer communication:
@@ -31,8 +33,24 @@ RISC-V Instruction Set Architecture (ISA): The RISC-V ISA is a language that ena
 Remember, effective communication with computers involves understanding the various components, their interactions, and the specific languages and processes required to translate and execute programs on hardware.
 
 
-
 This has been designed using the Verilog Hardware Description Language using Xilinx.ISE.Navigator.10.1 software, and modelsim.6.5e was used for all simulations. It is analysed and compared to determine how the proposed adders perform. The implementation code was developed in this proposed architecture, and delay and area values have been observed. The correlation of adders is the major element in the trade-off between these various topologies. These simulated output wave forms and RTL schematics have been generated and synthesis is carried out by chipscope. OpenLANE and Caravel are used with Skywater 130nm PDK. OpenLANE flow consists of multiple itersative stages where we obtain GDSII form RTL netlist. This chip design acquired from OpenLANE is used in caravel to place it on an SoC and design is hardened by placing our HDL code in user_project_wrapper and user_proj_example in caravel folders.
+
+Digital ASIC design requires several elements to be considered, and here we will discuss the key components, including RTL, EDA tools, and PDK data.
+
+RTL (Register Transfer Level): RTL is an abstraction level of the digital design description, where designers define the functionality of the circuit using hardware description languages like Verilog or VHDL. It represents the flow of data between registers and the operations performed on that data.
+
+EDA Tools (Electronic Design Automation): EDA tools are software applications that facilitate the design, verification, and analysis of electronic systems. These tools include logic synthesis, placement, routing, and timing analysis tools, among others. They automate the design process and help ensure correct functionality and performance of the ASIC.
+
+PDK Data (Process Design Kit): PDK is a collection of files provided by foundries to model the fabrication process for EDA tools. It acts as an interface between designers and the fabrication team. PDK data consists of several important elements:
+
+a. Design Rules: These rules define the geometrical and electrical constraints for designing the layout. They specify guidelines for metal spacing, width, vias, and other layout parameters to ensure proper manufacturability.
+
+b. Device Models: Device models describe the behavior of transistors and other active/passive components in the fabrication process. They provide information about the electrical characteristics, such as voltage-current relationships and capacitances, required for accurate simulation and analysis.
+
+c. Digital Standard Cell Libraries: These libraries contain pre-designed and pre-characterized standard cells, which are the building blocks of digital circuits. They include logic gates, flip-flops, and other commonly used elements. These cells are optimized for area, power, and timing, providing efficient options for circuit implementation.
+
+d. I/O Libraries: I/O libraries consist of interface cells designed for communication between the ASIC and the external world. They include input/output buffers, voltage level shifters, and other components to facilitate data transfer.
+
 
 Open Source Digital ASIC Design requires three open-source components:  
 - **RTL Designs** = github.com, librecores.org, opencores.org
