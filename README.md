@@ -561,21 +561,6 @@ met4       Vertical       124416        123148          1.02%
 met5       Horizontal      41472         41184          0.69%
 ---------------------------------------------------------------
 ```
-
-Final Congestion report :
-```
-[INFO GRT-0096] Final congestion report:
-Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
----------------------------------------------------------------------------------------
-li1               4004             0            0.00%             0 /  0 /  0
-met1            370761          2585            0.70%             0 /  0 /  0
-met2            310596          2959            0.95%             0 /  0 /  0
-met3            207064             0            0.00%             0 /  0 /  0
-met4            123148             0            0.00%             0 /  0 /  0
-met5             41184             0            0.00%             0 /  0 /  0
----------------------------------------------------------------------------------------
-Total          1056757          5544            0.52%             0 /  0 /  0
-```
 ```
 Final usage/overflow report: 
 
@@ -592,6 +577,22 @@ Final usage/overflow report:
 [INFO] Final number of vias : 70454
 [INFO] Final usage 3D       : 330289
 ```
+
+Final Congestion report :
+```
+[INFO GRT-0096] Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+---------------------------------------------------------------------------------------
+li1               4004             0            0.00%             0 /  0 /  0
+met1            370761          2585            0.70%             0 /  0 /  0
+met2            310596          2959            0.95%             0 /  0 /  0
+met3            207064             0            0.00%             0 /  0 /  0
+met4            123148             0            0.00%             0 /  0 /  0
+met5             41184             0            0.00%             0 /  0 /  0
+---------------------------------------------------------------------------------------
+Total          1056757          5544            0.52%             0 /  0 /  0
+```
+
 Best reference for this the [Triton Route paper](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiHkP7pnZj6AhUFHqYKHcBlC3UQFnoECBEQAQ&url=https%3A%2F%2Fvlsicad.ucsd.edu%2FPublications%2FConferences%2F363%2Fc363.pdf&usg=AOvVaw0ywnaeyGqzqAjI6TaJnamd).
 
 ### Final Layout:
