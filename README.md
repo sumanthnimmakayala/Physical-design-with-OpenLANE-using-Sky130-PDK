@@ -409,7 +409,9 @@ To clone the necessary mag files and spice models for the inverter, PMOS, and NM
 
 Open your terminal or command prompt.
 1. Run the following command to clone the files from the GitHub repository:
+
 ``` git clone https://github.com/nickson-jose/vsdstdcelldesign.git ```
+
 - The layout details of an inverter can be found in the ``sky130_inv.mag`` file.
 - The file contains information about the physical arrangement of the inverter components on the chip.
 - The inverter layout is important for understanding how the inverter is designed and how its components are connected.
