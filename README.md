@@ -112,8 +112,8 @@ Digital ASIC design requires several elements to be considered, and here we will
 ```
 
 Inside a specific design folder contains a `config.tcl` which overrides the default settings on OpenLANE. These configurations are specific to a design (e.g. clock period, clock port, verilog files...). The priority order for the OpenLANE settings:
-1. sky130_xxxxx_config.tcl in `OpenLane/designs/[design]/`
-2. config.tcl in `OpenLane/designs/[design]/`
+1. sky130_xxxxx_config.tcl in `OpenLane/designs/picorv32a/`
+2. config.tcl in `OpenLane/designs/picorv32a/`
 3. Default values in `OpenLane/configuration/`
 
 The task is to find the flip-flop ratio ratio for the design `picorv32a`.  For the OpenLane installation, the steps are very straight forward and can be found on the [OpenLane repo](https://github.com/The-OpenROAD-Project/OpenLane).
@@ -134,7 +134,7 @@ The task is to find the flip-flop ratio ratio for the design `picorv32a`.  For t
 
 ```  
 
-The  `README.md` describes all configuration variables for every stage and the tcl files contain the default OpenLANE settings. All configurations accepted by the current run is on `openlane/designs/picorv32a/runs/config.tcl`. This may come either from (with priority order):
+The  `README.md` describes all configuration variables for every stage and the tcl files contain the default OpenLANE settings. All configurations accepted by the current run is on `openlane/designs/05-06_08-09/runs/config.tcl`. This may come either from (with priority order):
  - PDK specific configuration inside the design folder
  - `config.tcl` inside the design folder
  - System default settings inside `openlane/configurations`
@@ -195,7 +195,7 @@ The  `README.md` describes all configuration variables for every stage and the t
 
 ``` 
 
-After running synthesis, inside the `runs/04-06_12-18/results/synthesis` is `picorv32a_synthesis.v` which is the mapping of the netlist to standard cell library using ABC. The `runs/04-06_12-18/reports/synthesis` will contain synthesis statistic reports and static timing analysis reports. The `runs/04-06_12-18/synthesis/logs` contains log files for the terminal output dumps for running yosys and OpenSTA.
+After running synthesis, inside the `runs/05-06_08-09/results/synthesis` is `picorv32a_synthesis.v` which is the mapping of the netlist to standard cell library using ABC. The `runs/05-06_08-09/reports/synthesis` will contain synthesis statistic reports and static timing analysis reports. The `runs/05-06_08-09/synthesis/logs` contains log files for the terminal output dumps for running yosys and OpenSTA.
 
 After the results, we need to calculate the flop ratio.
 ```
@@ -329,6 +329,28 @@ Floorplan environment variables or switches:
 4. `FP_IO_MODE` - defines pin configurations (1 = equidistant/0 = not equidistant)
 5. `FP_CORE_VMETAL` - vertical metal layer
 6. `FP_CORE_HMETAL` - horizontal metal layer
+
+
+- Constrains added in the `config.tcl` for the simulation.
+
+```
+set ::env(CLOCK_PERIOD) "90.0"
+
+#test
+set ::env(FP_CORE_UTIL) "80"
+set ::env(PL_TARGET_DENSITY) "0.2"
+set ::env(PL_BASIC_PLACEMENT) "0"
+set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) "0"
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) "0.0 0.0 1000.000 1000.000"
+set ::env(CORE_AREA) "5.25 10.88 900.00 900.00"
+
+set ::env(DIODE_INSERTION_STRATEGY) "4"
+set ::env(GLB_RT_MAXLAYER) "5"
+
+set ::env(VDD_NETS) [list {vccd1}]
+set ::env(GND_NETS) [list {vssd1}]
+```
 
 
 **Run floorplan on OpenLane:** 
@@ -597,7 +619,7 @@ Best reference for this the [Triton Route paper](https://www.google.com/url?sa=t
 
 ### Final Layout:
 ```
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/04-06_12-18/results/magic/picorv32a.mag
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/05-06_08-09/results/magic/picorv32a.mag
 ```
 ![klayout](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/745b403c-b03d-4928-9b35-679d5ebe1435)
 
@@ -644,7 +666,7 @@ The library cell developer must adhere to the rules given on the inputs so that 
 
 Open the def file via magic with no DRC errors: 
 ```
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/04-06_12-18/runs/picorv32a/results/magic/picorv21a.gds
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/05-06_08-09/runs/picorv32a/results/magic/picorv21a.gds
 ```
 
 ![drc](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/ac519125-1768-468e-9ea7-96011283ecba)
@@ -662,33 +684,34 @@ The die area here is in database units and 1 micron is equivalent to 1000 databa
 
 
 ```
-/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/04-06_12-18/reports/manufacturability_report.rpt
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/05-06_08-09/reports/manufacturability_report.rpt
 ```
 ```
 Design Name: picorv32a
 [INFO]: Calculating Runtime From the Start...
-[INFO]: Flow completed for picorv32a/04-06_12-18 in 1h9m19s
+[INFO]: Flow completed for picorv32a/05-06_08-09 in 1h36m44s
 [INFO]: Generating Final Summary Report...
 [INFO]: Design Name: picorv32a
-Run Directory: /openLANE_flow/designs/picorv32a/runs/04-06_12-18
+Run Directory: /openLANE_flow/designs/picorv32a/runs/05-06_08-09
 ----------------------------------------
 
 Magic DRC Summary:
-Source: /openLANE_flow/designs/picorv32a/runs/04-06_12-18/reports/magic//39-magic.drc
+Source: /openLANE_flow/designs/picorv32a/runs/05-06_08-09/reports/magic//42-magic.drc
 Total Magic DRC violations is 0
 ----------------------------------------
 
 LVS Summary:
-Source: /openLANE_flow/designs/picorv32a/runs/04-06_12-18/results/lvs/picorv32a.lvs_parsed.lef.log
+Source: /openLANE_flow/designs/picorv32a/runs/05-06_08-09/results/lvs/picorv32a.lvs_parsed.lef.log
 LVS reports no net, device, pin, or property mismatches.
 Total errors = 0
 ----------------------------------------
 
 Antenna Summary:
-Source: /openLANE_flow/designs/picorv32a/runs/04-06_12-18/reports/routing//41-antenna.rpt
-Number of pins violated: 154
-Number of nets violated: 129
-[SUCCESS]: Flow Completed Without Fatal Errors.
+Source: /openLANE_flow/designs/picorv32a/runs/05-06_08-09/reports/routing//44-antenna.rpt
+Number of pins violated: 19
+Number of nets violated: 16
+[INFO]: check full report here: /openLANE_flow/designs/picorv32a/runs/05-06_08-09/reports/final_summary_report.csv
+[SUCCESS]: Flow Completed Without Fatal Errors.
 ```
 
 To ensure proper signal timing and avoid any issues, we need to perform certain steps in the IC design process. One important step is to run post-routing Static Timing Analysis (STA) using the `run_parasitics_sta` command.
@@ -701,10 +724,10 @@ Here's what happens during this process:
 
 - **Slack Analysis:** The introduction of real-world parasitics can potentially worsen the slack, which is the timing margin between the required and actual arrival times of signals. Both setup and hold slack can be affected. Setup slack refers to the time difference between the launch and capture of signals, while hold slack refers to the time for which a signal must be held stable. It is important to ensure that the slack is within acceptable levels for proper circuit functionality.
 
-- **SPEF and STA Logs:** The results of the SPEF extraction and STA analysis can be found in the designated directories. The extracted SPEF file is typically located under `runs/picorv32a/results/routing`, while the STA log files are stored in `runs/04-06_12-18/logs/signoff`. These logs provide detailed information about timing violations, slack values, and other relevant data for analysis.
+- **SPEF and STA Logs:** The results of the SPEF extraction and STA analysis can be found in the designated directories. The extracted SPEF file is typically located under `runs/05-06_08-09/results/routing`, while the STA log files are stored in `runs/05-06_08-09/logs/signoff`. These logs provide detailed information about timing violations, slack values, and other relevant data for analysis.
 
 - **Timing ECO:** If the slack values are not within the desired levels, a Timing Engineering Change Order (ECO) can be performed. This involves making adjustments to the design, such as tweaking the netlist or modifying the routing, to improve the slack and meet the required timing constraints.
 
-Once the post-routing STA and timing ECO are completed, the final step is to generate the GDSII (Graphic Data System II) file for fabrication. This is done by running run_magic, which utilizes Magic to create the GDSII file. The resulting GDSII file, located at `runs/04-06_12-18/results/signoff/picorv32a.gds`, can be further processed or sent for manufacturing.
+Once the post-routing STA and timing ECO are completed, the final step is to generate the GDSII (Graphic Data System II) file for fabrication. This is done by running run_magic, which utilizes Magic to create the GDSII file. The resulting GDSII file, located at `runs/05-06_08-09/results/signoff/picorv32a.gds`, can be further processed or sent for manufacturing.
 
 ![finalgds](https://github.com/sumanthnimmakayala/Physical-design-with-OpenLANE-using-Sky130-PDK/assets/113964084/d3522ee3-6445-469c-9d6e-b08e6ef1ad6a)
