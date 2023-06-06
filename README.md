@@ -710,7 +710,6 @@ Antenna Summary:
 Source: /openLANE_flow/designs/picorv32a/runs/05-06_08-09/reports/routing//44-antenna.rpt
 Number of pins violated: 19
 Number of nets violated: 16
-[INFO]: check full report here: /openLANE_flow/designs/picorv32a/runs/05-06_08-09/reports/final_summary_report.csv
 [SUCCESS]: Flow Completed Without Fatal Errors.
 ```
 
