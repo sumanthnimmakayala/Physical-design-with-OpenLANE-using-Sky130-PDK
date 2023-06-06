@@ -334,9 +334,6 @@ Floorplan environment variables or switches:
 - Constrains added in the `config.tcl` for the simulation.
 
 ```
-set ::env(CLOCK_PERIOD) "90.0"
-
-#test
 set ::env(FP_CORE_UTIL) "80"
 set ::env(PL_TARGET_DENSITY) "0.2"
 set ::env(PL_BASIC_PLACEMENT) "0"
